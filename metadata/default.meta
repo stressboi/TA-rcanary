@@ -1,19 +1,35 @@
+
+# Application-level permissions
+
 []
-access = read : [ * ], write : [ admin ]
-export = system
-owner = admin
+access = read : [ * ], write : [ admin, power ]
 
-[lookups/eventcode.csv]
-access = read : [ * ], write : [ admin ]
-export = system
-owner = admin
+### EVENT TYPES
 
-[transforms/eventcode]
-access = read : [ * ], write : [ admin ]
+[eventtypes]
 export = system
-owner = admin
 
-[props/XmlWinEventLog%3AMicrosoft-Windows-Sysmon%2FOperational/LOOKUP-eventcode]
-access = read : [ * ], write : [ admin ]
+
+### PROPS
+
+[props]
 export = system
-owner = admin
+
+
+### TRANSFORMS
+
+[transforms]
+export = system
+
+
+### LOOKUPS
+
+[lookups]
+export = system
+
+
+### VIEWSTATES: even normal users should be able to create shared viewstates
+
+[viewstates]
+access = read : [ * ], write : [ * ]
+export = system
